@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -15,9 +14,6 @@ namespace Project_Sauron.Models
 
         [MaxLength(50)]
         public string Name { get; set; }
-
-        [MaxLength(70)]
-        public string Photo { get; set; }
 
         public bool Online { get; set; } = false;
 

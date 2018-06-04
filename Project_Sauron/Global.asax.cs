@@ -87,7 +87,7 @@ namespace Project_Sauron
                     {
                         item.Name = Temp[i].first_name + " " + Temp[i].last_name;
                         item.LastActivity = Temp[i].last_seen.time;
-                        item.Photo = Temp[i].photo_200_orig;
+                        //item.Photo = Temp[i].photo_200_orig;
 
                         if (Temp[i].online == 0)
                             onl = false;

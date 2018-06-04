@@ -31,7 +31,7 @@ namespace Project_Sauron.Models
 
         public List<Enemy> Enemies { get; set; }
 
-        public SiteTheme SiteTheme { get; set; }
+        public virtual SiteTheme SiteTheme { get; set; } = null;
     }
 
     public class Role

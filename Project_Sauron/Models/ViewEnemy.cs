@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace Project_Sauron.Models
 {
@@ -53,7 +49,7 @@ namespace Project_Sauron.Models
             Online = onl;
             LastActivity = (new DateTime(1970, 1, 1, 0, 0, 0).AddSeconds(enemy.LastActivity).ToLocalTime()).ToString() + " " + platform;
             Status = enemy.Status;
-            Photo = enemy.Photo;
+            //Photo = enemy.Photo;
         }
 
     }

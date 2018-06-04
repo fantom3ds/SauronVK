@@ -74,7 +74,6 @@ namespace Project_Sauron.Controllers
                                 Name = temp.first_name + " " + temp.last_name,
                                 LastActivity = temp.last_seen.time,
                                 Status = temp.status,
-                                Photo = temp.photo_200_orig,
                                 AuthorId = thisUser
                             };
                             //Присваиваем онлайн
@@ -157,7 +156,10 @@ namespace Project_Sauron.Controllers
                         return RedirectToAction("Index");
                     DB.Entry(choice).Collection(u => u.EnemyEvents).Load();//+2
 
-                    ThisEnemy = new ViewEnemyStatistic(choice);
+                    VkApi vk = new VkApi();
+                    var A = vk.User_Info(choice.Link);
+
+                    ThisEnemy = new ViewEnemyStatistic(choice, A);
                 }
                 return View(ThisEnemy);
             }

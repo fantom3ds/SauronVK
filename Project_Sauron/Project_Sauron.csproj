@@ -157,9 +157,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806031108361_Initial.cs" />
-    <Compile Include="Migrations\201806031108361_Initial.Designer.cs">
-      <DependentUpon>201806031108361_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201806041731103_Initial.cs" />
+    <Compile Include="Migrations\201806041731103_Initial.Designer.cs">
+      <DependentUpon>201806041731103_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Enemy.cs" />
@@ -203,8 +203,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806031108361_Initial.resx">
-      <DependentUpon>201806031108361_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806041731103_Initial.resx">
+      <DependentUpon>201806041731103_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

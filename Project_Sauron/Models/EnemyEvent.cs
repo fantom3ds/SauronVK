@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project_Sauron.Models
@@ -23,8 +22,6 @@ namespace Project_Sauron.Models
         [Required]
         public long Time { get; set; } = 0;
 
-        [MaxLength(150)]
-        public string SetStatus { get; set; } = "(Пустой статус)";
     }
 
     public class EventType

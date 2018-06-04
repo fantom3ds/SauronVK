@@ -14,7 +14,6 @@ namespace Project_Sauron.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Link = c.String(nullable: false, maxLength: 20),
                         Name = c.String(maxLength: 50),
-                        Photo = c.String(maxLength: 70),
                         Online = c.Boolean(nullable: false),
                         LastActivity = c.Long(nullable: false),
                         Platform = c.Byte(nullable: false),
@@ -70,7 +69,6 @@ namespace Project_Sauron.Migrations
                         EnemyId = c.Int(nullable: false),
                         EventTypeId = c.Int(nullable: false),
                         Time = c.Long(nullable: false),
-                        SetStatus = c.String(maxLength: 150),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Enemies", t => t.EnemyId, cascadeDelete: true)
@@ -93,7 +91,7 @@ namespace Project_Sauron.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Message = c.String(maxLength: 50),
-                        TargetSite = c.String(maxLength: 50),
+                        TargetSite = c.String(maxLength: 30),
                         Time = c.Long(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);

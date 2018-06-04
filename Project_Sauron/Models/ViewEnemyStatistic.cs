@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+using VKAPI;
 
 namespace Project_Sauron.Models
 {
@@ -27,7 +26,7 @@ namespace Project_Sauron.Models
         [Display(Name = "Статистика")]
         public List<ViewEvent> ViewEvents { get; set; }
 
-        public ViewEnemyStatistic(Enemy enemy)
+        public ViewEnemyStatistic(Enemy enemy, UserInfo info)
         {
             Id = enemy.Id;
             Name = enemy.Name;
@@ -53,7 +52,7 @@ namespace Project_Sauron.Models
             LastActivity = (new DateTime(1970, 1, 1, 0, 0, 0).AddSeconds(enemy.LastActivity).ToLocalTime()).ToString() + " " + platform;
 
             Status = enemy.Status;
-            Photo = enemy.Photo;
+            Photo = info.photo_200_orig;
 
             ViewEvents = new List<ViewEvent>();
             foreach (var item in enemy.EnemyEvents)

@@ -8,15 +8,28 @@
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
-    <div class="Sauronheader">
-        <div id="head-link" class="Sauronheader-links">
-            @Html.ActionLink("Проект \"Саурон\"", "Index", "Home")
+    <div class="SauronHeader">
+        <div class="Sauroneader-links">
+            @Html.ActionLink("Проект \"Саурон\"", "Index", "Home", new { @id = "HeadLink" })
         </div>
         @if (User.Identity.IsAuthenticated)
         {
-            <div class="Sauronheader-links user-link">
-                Здравствуйте, @Html.ActionLink(User.Identity.Name, "PrivateOffice", "Home")
-                <a href="/Account/Logout" class="navbar-brand">(Выход)</a>
+            <div class="UserLink">
+                Здравствуйте,
+                <a class="UserLinkMenu" href="javascript:void(0);" tabindex="1">@User.Identity.Name</a>
+                <div class="UserSubmenu">
+                    <div class="UserSubMenuBtn">@Html.ActionLink("Личный кабинет", "PrivateOffice", "Home")</div>
+
+                    <div class="UserSubMenuBtn">
+                        <a href="#2" class="main-item">подпункт 2</a>
+                        <div class="sub-menu">
+                            <div><a href="#1">подпункт 1</a></div>
+                            <div><a href="#2">подпункт 2</a></div>
+                            <div><a href="#3">подпункт 3</a></div>
+                        </div>
+                    </div>
+                    <div class="UserSubMenuBtn">@Html.ActionLink("Выход", "Logout", "Account")</div>
+                </div>
             </div>
         }
         else
@@ -30,7 +43,7 @@
 
 
 
-    <div class="Sauroncontainer">
+    <div class="SauronContainer">
         @RenderBody()
         <hr />
     </div>

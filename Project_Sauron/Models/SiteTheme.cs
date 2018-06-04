@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Project_Sauron.Models
 {
@@ -17,5 +14,7 @@ namespace Project_Sauron.Models
         [Required]
         [MaxLength(50)]
         public string CssPath { get; set; }
+
+        public List<User> Users { get; set; }
     }
 }
