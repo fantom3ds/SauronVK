@@ -1,0 +1,62 @@
+﻿@model Project_Sauron.Models.ViewEnemyStatistic
+
+@{
+    ViewBag.Title = "EnemyStatistic";
+}
+
+<h2>@Model.Name</h2>
+
+<div>
+    <h3>Статистика</h3>
+    <hr />
+    
+
+    <div>
+        <div class="Enemy-info">
+            <img src="@Model.Photo" resource="@Model.Photo" />
+        </div>
+        <div class="Enemy-info">
+            <dl class="Enemy-info">
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Online)
+                </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.LastActivity)
+                </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Status)
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+
+    <table class="table">
+        <tr>
+            <th>
+                Cобытие
+            </th>
+
+            <th>
+                Время
+            </th>
+        </tr>
+
+        @foreach (var item in Model.ViewEvents)
+        {
+            <tr>
+                <td>
+                    @item.Event
+                </td>
+
+                <td>
+                    @item.Time
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

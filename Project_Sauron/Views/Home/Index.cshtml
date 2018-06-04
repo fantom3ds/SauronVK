@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Project_Sauron.Models.ViewEnemy>
+
+@{
+    ViewBag.Title = "Главная";
+}
+
+<div class="admin-panel">
+    <ul class="admin-listbutton">
+        <li class="admin-button">@Html.ActionLink("Пользователи сайта", "Index", "Users")</li>
+        <li class="admin-button">@Html.ActionLink("Очистить всю статистику", "", "")</li>
+        <li class="admin-button">@Html.ActionLink("Глобальные настройки", "", "")</li>
+    </ul>
+</div>
+
+<h2>Главная страница</h2>
+
+<p>
+    @Html.ActionLink("Добавить пользователя", "AddEnemy")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Online)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastActivity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Online)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastActivity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Статистика", "EnemyStatistic", new { id = item.Id }) |
+                @Html.ActionLink("Удалить", "DeleteEnemy", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

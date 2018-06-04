@@ -1,0 +1,42 @@
+﻿@model Project_Sauron.Models.SignupModel
+@{
+    ViewBag.Title = "Signup";
+    Layout = "~/Shared/_Layout.cshtml";
+}
+<div class="content">
+    <h2>Регистрация</h2>
+    <div class="register">
+        @using (Html.BeginForm("Signup", "User", FormMethod.Post, new { @class = "reg" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <p>
+                @* <label for="email">Почта</label>*@
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(Model => Model.Email)
+                @Html.ValidationMessageFor(Model => Model.Email)
+            </p>
+            <p>
+                @*  <label for="login">Логин</label>*@
+                @Html.LabelFor(m => m.Username)
+                @Html.TextBoxFor(Model => Model.Username)
+                @Html.ValidationMessageFor(Model => Model.Username)
+            </p>
+            @*<p>*@
+                @*<label for="pass1">Пароль</label>*@
+                @*@Html.LabelFor(m => m.Password)*@
+                @*@Html.PasswordFor(Model => Model.Password)*@
+                @*@Html.ValidationMessageFor(Model => Model.Password)*@
+            @*</p>*@
+            @*<p>*@
+                @*<label for="pass2">Повтор пароля</label>*@
+                @*@Html.LabelFor(m => m.ConfrimPassword)*@
+                @*@Html.PasswordFor(Model => Model.ConfrimPassword)*@
+                @*@Html.ValidationMessageFor(Model => Model.ConfrimPassword)*@
+            @*</p>*@
+            <p>
+            </p>
+            <p><input id="go_reg" type="submit" name="" value="Зарегистрироваться"></p>
+        }
+    </div>
+</div>

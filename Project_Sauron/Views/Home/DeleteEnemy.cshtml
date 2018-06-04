@@ -1,0 +1,80 @@
+﻿@model Project_Sauron.Models.Enemy
+
+@{
+    ViewBag.Title = "DeleteEnemy";
+}
+
+<h2>DeleteEnemy</h2>
+
+<h3>Вы уверены, что хотите удалить этого пользователя из списка слежки? Вся его статистика также будет удалена.</h3>
+<div>
+    <h4>Enemy</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Link)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Photo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Online)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Online)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastActivity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastActivity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuthorId)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

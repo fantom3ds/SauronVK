@@ -1,0 +1,86 @@
+﻿@model Project_Sauron.Models.User
+
+@{
+    ViewBag.Title = "UserDetails";
+}
+
+<h2>Details</h2>
+
+<p>
+    @Html.ActionLink("Edit", "EditUser", new { id = Model.Id }) |
+    @Html.ActionLink("Обратно к списку пользователей", "Index")
+</p>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Login)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nickname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nickname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoleId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoleId)
+        </dd>
+
+    </dl>
+
+    @*Присобачил таблицу с добавленными пользователем жертвами*@
+    <table class="enemy-list">
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Имя
+            </th>
+            <th>
+                Онлайн-статус
+            </th>
+            <th>
+                Последняя активность
+            </th>
+            <th>
+                Статус
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.Enemies)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Link)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @item.OnlineStat()
+                </td>
+                <td>
+                    @item.UTFTime().ToLocalTime()
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+            </tr>
+        }
+    </table>
+
+</div>
