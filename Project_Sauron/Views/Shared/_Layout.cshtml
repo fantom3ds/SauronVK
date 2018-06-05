@@ -4,13 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Проект "Саурон"</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Standart.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
     <div class="SauronHeader">
         <div class="Sauroneader-links">
-            @Html.ActionLink("Проект \"Саурон\"", "Index", "Home", new { @id = "HeadLink" })
+            @Html.ActionLink("Проект \"Саурон\"", "Index", "Home", null, new { @id = "HeadLink" })
         </div>
         @if (User.Identity.IsAuthenticated)
         {
@@ -35,7 +35,7 @@
         else
         {
             <div class="Sauronheader-links">
-                <a href="@Url.Action("Signup", "Users")" class="right">Регистрация</a>
+                @Html.ActionLink("Регистрация", "Register", "Account")
             </div>
 
         }

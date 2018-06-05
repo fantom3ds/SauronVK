@@ -1,0 +1,285 @@
+﻿/*Тело для мастер-страницы*/
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-image: url(Background/1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*Шапка сайта*/
+.SauronHeader {
+    background-color: #4A76A8;
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    border-radius: 3px;
+    opacity: 1;
+    border: 2px solid #243751;
+    z-index: 100;
+}
+
+/*Тело прочих страниц*/
+.SauronContainer {
+    background-color: #C0C0C0;
+    opacity: 0.8;
+}
+
+/*Подвал, или надпись внизу*/
+.Sauronfooter {
+    width: 100%;
+    margin: 0;
+}
+
+.SauronHead {
+    padding-top: 20px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 15px;
+    height: 100%;
+    background-color: #A6CADB;
+}
+
+.Sauronheader-links {
+    display: inline-block;
+    vertical-align: middle;
+    top: 10px;
+    left: 75%;
+    position: absolute;
+}
+
+#HeadLink {
+    font-size: 32px;
+    color: black;
+    font-weight: 900;
+    /*font-family: CalligraphModern;*/
+    font-family: AnotherAmerica;
+    letter-spacing: 5px;
+    width: 20%;
+    margin-left: 10px;
+}
+
+    #HeadLink:hover {
+        color: red;
+        transform: scaleX(-1);
+        transition: .5s ease-in-out;
+    }
+
+.UserLink {
+    font-size: 20px;
+    text-align: right;
+    width: auto;
+    position: absolute;
+    left: 70%;
+    top: 10px;
+}
+
+
+.UserSubmenu {
+    display: none;
+    height: auto;
+    position: absolute;
+    top: 25px;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+    .UserLinkMenu:focus ~ .UserSubmenu,
+    .UserLinkMenu:active ~ .UserSubmenu,
+    .UserSubmenu:hover {
+        display: block;
+        text-align: left;
+        list-style-type: none;
+        background-color: #4A76A8;
+    }
+
+.UserSubMenuBtn {
+    background-color: #A6CADB;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+    .UserSubMenuBtn:hover {
+        background-color:red;
+    }
+
+
+.sub-menu {
+    display: none;
+}
+
+    .main-item:focus ~ .sub-menu,
+    .main-item:active ~ .sub-menu,
+    .sub-menu:hover {
+        display: inline-block;
+    } 
+
+/*Убрать у всех ссылок подчеркивание*/
+a {
+    text-decoration: none;
+}
+
+
+
+/*=====================Админ-панель===================*/
+/*Блок div админ-панели*/
+.admin-panel {
+    background-color: #D0FF00;
+    border-radius: 10px;
+    width: 100%;
+}
+
+/*Набор кнопок*/
+.admin-listbutton {
+    display: inline-block;
+}
+
+/*Кнопочки*/
+.admin-button {
+    font-family: Courier New, Courier, monospace;
+    display: inline-block;
+    font-size: 20px;
+    border: 1px solid black;
+    margin-right: 10px;
+}
+
+    .admin-button:hover {
+        border: 1px solid black;
+        background-color: #DFDFDF;
+        box-shadow: 5px 5px;
+        animation: 0.1s phone infinite;
+        transform: scaleX(1);
+        transition: .5s ease-in-out;
+        opacity: 1;
+    }
+
+@keyframes phone {
+    0%, 100% {
+        transform: rotate(-1deg);
+    }
+
+    50% {
+        transform: rotate(2deg);
+    }
+}
+
+
+/*=======================Таблицы=========================*/
+table {
+    width: 100%;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 14px;
+    border-radius: 10px;
+    border-spacing: 0;
+    text-align: center;
+}
+
+th {
+    background: #BCEBDD;
+    text-shadow: 0 1px 1px #2D2020;
+    padding: 10px 20px;
+}
+
+th, td {
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    border-color: black;
+    width: auto;
+}
+
+    th:first-child, td:first-child {
+        text-align: left;
+    }
+
+    th:first-child {
+        border-top-left-radius: 10px;
+    }
+
+    th:last-child {
+        border-top-right-radius: 10px;
+        border-right: none;
+    }
+
+td {
+    padding: 10px 20px;
+    background: #F8E391;
+}
+
+tr:last-child td:first-child {
+    border-radius: 0 0 0 10px;
+}
+
+tr:last-child td:last-child {
+    border-radius: 0 0 10px 0;
+}
+
+tr td:last-child {
+    border-right: none;
+}
+
+td:first-child {
+    background-color: blueviolet;
+}
+
+td:last-child {
+    width: 150px;
+    background-color: #DA443D;
+}
+
+/*==========================Шрифты============================*/
+@font-face {
+    font-family: Nautilus;
+    src: url(Fonts/Nautilus.otf);
+}
+
+@font-face {
+    font-family: CalligraphModern;
+    src: url('Fonts/Calligraph Modern.ttf')
+}
+
+@font-face {
+    font-family: AnotherAmerica;
+    src: url('Fonts/Another America.otf');
+}
+
+
+
+/*Блоки с информацией о пользователе*/
+.Enemy-info {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 16px;
+}
+
+.List-button {
+    border: 1px solid black;
+    font-size: 14px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.Form-Registration {
+    background-color: yellow;
+    text-align: center;
+}
+
+.form-control {
+    font-size: 16px;
+    border: 1px groove black;
+}
+
+.form-group {
+    font-family: CalligraphModern;
+    font-size: 24px;
+}
+
+
+.dl-PrivateOffice {
+    background-color: #DFDFDF;
+}

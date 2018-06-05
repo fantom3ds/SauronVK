@@ -157,8 +157,15 @@ namespace Project_Sauron.Controllers
                     DB.Entry(choice).Collection(u => u.EnemyEvents).Load();//+2
 
                     VkApi vk = new VkApi();
-                    var A = vk.User_Info(choice.Link);
+                    var A = new UserInfo();
+                    try
+                    {
+                        A = vk.User_Info(choice.Link);
+                    }
+                    catch
+                    {
 
+                    }
                     ThisEnemy = new ViewEnemyStatistic(choice, A);
                 }
                 return View(ThisEnemy);

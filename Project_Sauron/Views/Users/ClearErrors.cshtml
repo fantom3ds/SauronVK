@@ -1,0 +1,48 @@
+﻿@model Project_Sauron.Models.ViewError
+
+@{
+    ViewBag.Title = "ClearErrors";
+}
+
+<h2>ClearErrors</h2>
+
+<h3>Вы уверены, что хотите очистить всю статистику? Это действие невозможно отменить</h3>
+<div>
+    @*<h4>ViewError</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TargetSite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TargetSite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+
+    </dl>*@
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

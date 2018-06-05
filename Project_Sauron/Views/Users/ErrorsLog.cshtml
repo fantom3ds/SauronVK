@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Project_Sauron.Models.ViewError>
+
+@{
+    ViewBag.Title = "ErrorsLog";
+}
+
+<h2>ErrorsLog</h2>
+
+<p>
+    @Html.ActionLink("Очистить все", "ClearErrors","Users")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Message)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TargetSite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Message)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TargetSite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time)
+        </td>
+    </tr>
+}
+
+</table>

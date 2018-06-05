@@ -34,7 +34,7 @@ namespace Project_Sauron
                     VkApi Bound = new VkApi();
                     List<UserInfo> Temp = Bound.Users_Info(string.Join(",", DB.Enemies));
 
-                    //Включен
+                    //Заккоментирован
                     #region Мой вариант
 
                     ////Вытаскиваем все данные из БД
@@ -78,7 +78,7 @@ namespace Project_Sauron
 
                     #endregion
 
-                    //Закомментирован
+                    //Включен
                     #region Вариант Верескуна
 
                     int i = 0;
@@ -125,7 +125,7 @@ namespace Project_Sauron
                         {
                             Message = Ex.Message,
                             TargetSite = Ex.TargetSite.ToString(),
-                            Time = (long)((DateTime.Now - new DateTime(1970, 1, 1, 0, 0, 0)).TotalSeconds)
+                            Time = 111
                         });
                         DB.SaveChanges();
                     }

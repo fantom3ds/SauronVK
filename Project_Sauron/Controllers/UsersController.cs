@@ -176,6 +176,32 @@ namespace Project_Sauron.Controllers
         }
 
         #endregion
+
+        #region Лог ошибок
+
+        public ActionResult ErrorsLog()
+        {
+            List<Error> errorlist = new List<Error>();
+            using (UserContext DB = new UserContext())
+            {
+                errorlist = DB.Errors.ToList();
+            }
+            List<ViewError> views = new List<ViewError>();
+
+            foreach (var item in errorlist)
+            {
+                views.Add(item);
+            }
+            errorlist.Clear();
+            return View(views);
+        }
+
+        public ActionResult ClearErrors()
+        {
+            return View();
+        }
+
+        #endregion
     }
 
 }
