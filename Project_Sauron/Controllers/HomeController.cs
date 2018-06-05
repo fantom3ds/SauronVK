@@ -9,6 +9,8 @@ using VKAPI;
 
 using System.Data.Entity;
 using System.Threading.Tasks;
+using System.Text;
+using System.Security.Cryptography;
 
 namespace Project_Sauron.Controllers
 {
@@ -184,7 +186,7 @@ namespace Project_Sauron.Controllers
             User principal = null;
             using (UserContext DB = new UserContext())
             {
-                principal = DB.Users.Include(r => r.Role).Include(th => th.SiteTheme).FirstOrDefault(L => L.Login == User.Identity.Name);
+                principal = DB.Users.Include(r => r.Role).FirstOrDefault(L => L.Login == User.Identity.Name);
                 if (principal == null)
                     return
                         new HttpNotFoundResult("Ошибка входа в личный кабинет, перелогиньтесь и попробуйте снова");
@@ -192,6 +194,66 @@ namespace Project_Sauron.Controllers
             }
         }
 
+        public ActionResult EditPrivateOffice(int Id)
+        {
+            User principal = null;
+            using (UserContext DB = new UserContext())
+            {
+                principal = DB.Users.FirstOrDefault(L => L.Id == Id);
+                if (principal == null)
+                    return
+                        new HttpNotFoundResult("Ошибка входа в личный кабинет, перелогиньтесь и попробуйте снова");
+                EditUserModel editUser = new EditUserModel
+                {
+                    Id = principal.Id,
+                    Password = null,
+                    Nickname = principal.Nickname,
+                    ConfrimPassword = null
+                };
+                return View(editUser);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EditPrivateOffice(EditUserModel user)
+        {
+            User principal = null;
+            using (UserContext DB = new UserContext())
+            {
+                principal = DB.Users.FirstOrDefault(L => L.Id == user.Id);
+                if (principal == null)
+                    return
+                        new HttpNotFoundResult("Ошибка пользователя");
+
+                principal.Nickname = user.Nickname;
+                if (user.Password != null && user.ConfrimPassword != null)
+                    principal.Password = GetHashString(user.Password);
+
+                DB.SaveChanges();
+            }
+            return RedirectToAction("PrivateOffice", "Home");
+        }
+
+        static Guid GetHashString(string s)
+        {
+            //переводим строку в байт-массим  
+            byte[] bytes = Encoding.Unicode.GetBytes(s);
+
+            //создаем объект для получения средст шифрования  
+            MD5CryptoServiceProvider CSP =
+                new MD5CryptoServiceProvider();
+
+            //вычисляем хеш-представление в байтах  
+            byte[] byteHash = CSP.ComputeHash(bytes);
+
+            string hash = string.Empty;
+
+            //формируем одну цельную строку из массива  
+            foreach (byte b in byteHash)
+                hash += string.Format("{0:x2}", b);
+
+            return new Guid(hash);
+        }
         #endregion
     }
 }

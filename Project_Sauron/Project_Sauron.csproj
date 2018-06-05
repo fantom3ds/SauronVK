@@ -164,6 +164,7 @@
       <DependentUpon>201806041731103_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\EditUserModel.cs" />
     <Compile Include="Models\Enemy.cs" />
     <Compile Include="Models\EnemyEvent.cs" />
     <Compile Include="Models\EnemyModel.cs" />
@@ -199,6 +200,7 @@
     <Content Include="Views\Users\ErrorsLog.cshtml" />
     <Content Include="Views\Users\ClearErrors.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Home\EditPrivateOffice.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

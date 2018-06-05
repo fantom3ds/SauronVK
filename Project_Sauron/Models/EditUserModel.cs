@@ -1,16 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
 
 namespace Project_Sauron.Models
 {
-    public class RegisterModel
+    public class EditUserModel
     {
-        [Display(Name = "Страница ВК (для фото и информации о пользователе, не бойтесь)")]
-        public string PageVK { get; set; }
+        public int Id { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "Значение {0} должно содержать не менее {2} символов.", MinimumLength = 3)]
-        [Display(Name = "Логин")]
-        public string Login { get; set; }
+        [Display(Name = "Страница ВК")]
+        public string PageVK { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "Значение {0} должно содержать не менее {2} символов.", MinimumLength = 6)]
@@ -25,5 +26,7 @@ namespace Project_Sauron.Models
 
         [Display(Name = "Никнейм")]
         public string Nickname { get; set; }
+
+        public string SavePass { get; set; }
     }
 }
