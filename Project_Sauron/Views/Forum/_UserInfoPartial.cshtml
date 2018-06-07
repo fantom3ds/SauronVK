@@ -1,0 +1,12 @@
+﻿@model Project_Sauron.Models.User
+
+<div class="userinfo">
+  
+    <p class="name">Регистрация:</p>
+    <p class="data">@Model.RegDate.ToShortDateString()</p>
+    <p class="name">На форуме:</p>
+    <p class="data">@ViewBag.Time</p>
+    <p class="name">Сообщений:</p>
+    <p class="data">@Model.Messages</p>
+</div>
+

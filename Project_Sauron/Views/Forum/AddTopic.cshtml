@@ -1,0 +1,22 @@
+﻿@model  Project_Sauron.Models.TopicModel
+@{
+    ViewBag.Title = "AddTopic";
+    Layout = "~/Views/MasterView.cshtml";
+}
+<div class="content">
+    <h2>Добавить тему</h2>
+    <div class="addtopic">
+        @using (Html.BeginForm("AddTopic", "Forum", FormMethod.Post, new { @class = "reg" }))
+        {
+            <p>
+                @Html.LabelFor(m => m.TopicName)
+                @Html.TextBoxFor(m => m.TopicName)
+            </p>
+            <p>
+                @Html.LabelFor(m => m.Text)
+                @Html.TextAreaFor(m => m.Text, 8, 80, new { })
+            </p>
+            <p><input id="go_reg" type="submit" name="" value="Отправить"></p>
+        }
+    </div>
+</div>

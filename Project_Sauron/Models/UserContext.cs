@@ -13,5 +13,8 @@ namespace Project_Sauron.Models
         public DbSet<EventType> EventTypes { get; set; }
         public DbSet<Error> Errors { get; set; }
         public DbSet<SiteTheme> SiteThemes { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Section> Sections { get; set; }
+        public DbSet<Topic> Topics { get; set; }
     }
 }

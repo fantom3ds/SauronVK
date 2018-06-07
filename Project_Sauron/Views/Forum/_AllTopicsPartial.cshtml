@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Project_Sauron.Models.Topic>
+
+@foreach (var t in Model)
+{
+    <div class="topic">
+        @*<div class="image">*@
+            <div class="topic_content">
+                <a href="@Url.Action("Topic", "Forum", new { id = t.Ident})">@t.TopicName</a>
+            </div>
+            <div class="author">
+                <a href="#">@t.Author</a>
+            </div>
+            <div class="date">
+                @t.Pubdate
+            </div>
+        </div>
+    @*</div>*@
+}

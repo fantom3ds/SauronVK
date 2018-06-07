@@ -1,0 +1,14 @@
+﻿@model  Project_Sauron.Models.CommentModel
+<div class="commentform">
+    <h3>Оставить комментарий</h3>
+    @*<form class="comment" action="Topic.html" method="post">*@
+    @using (Html.BeginForm("AddComment", "Forum", FormMethod.Post, new { @class = "comment" }))
+    {
+        @*<p><label for="text">Ваш комментарий</label></p>*@
+        <p>@Html.LabelFor(m => m.Text)</p>
+        @*<textarea name="text" rows="8" cols="80"></textarea>*@
+        @Html.TextAreaFor(m => m.Text, 8, 80, new { })
+        <p><input id="go_reg" type="submit" name="" value="Отправить"></p>
+    }
+    @*</form>*@
+</div>

@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Section";
+    Layout = "~/Views/MasterView.cshtml";
+}
+<div class="content">
+    <div class="section">
+        <h3 class="link"><a href="">@Model.SectionName</a></h3>
+        <div class="section_content">
+            @Html.Action("SectionTopicsAll", "Forum", new { id = Model.Id })
+        </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a href="@Url.Action("AddTopic", "Forum", new { id = Model.Id, name = Model.SectionName})" id="go_reg">Добавить тему</a>
+        }
+    </div>
+</div>
