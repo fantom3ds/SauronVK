@@ -1,14 +1,13 @@
-﻿using Project_Sauron.Models;
+﻿using Project_Sauron.DataAccesLayer;
+using Project_Sauron.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using VKAPI;
-using xNet;
 
 namespace Project_Sauron
 {
@@ -21,6 +20,49 @@ namespace Project_Sauron
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            #region Мой инициализатор
+            try
+            {
+                using (UserContext DB = new UserContext())
+                {
+
+                    if (DB.Roles.ToList().Count == 0)
+                    {
+                        DB.Roles.Add(new Role { Id = 1, Name = "admin" });
+                        DB.Roles.Add(new Role { Id = 2, Name = "user" });
+                    }
+                    if (DB.EventTypes.ToList().Count == 0)
+                    {
+                        DB.EventTypes.Add(new EventType { Id = 1, Type = "Online" });
+                        DB.EventTypes.Add(new EventType { Id = 2, Type = "Online" });
+                        DB.EventTypes.Add(new EventType { Id = 3, Type = "StatusChange" });
+                    }
+                    DB.SaveChanges();
+
+                    if (DB.Users.ToList().Count == 0)
+                    {
+                        DB.Users.Add(new Models.User
+                        {
+                            Id = 1,
+                            Login = "Admin",
+                            Password = Guid.Parse("7066a40f-4277-69cc-4334-7aa96b72931a"),
+                            Nickname = "fantom3ds",
+                            RegDate = DateTime.Now,
+                            RoleId = 1,
+                            Status = 1
+                        });
+                    }
+                    DB.SaveChanges();
+                }
+            }
+            catch
+            {
+
+            }
+
+            #endregion
+
             RefreshCallback = new TimerCallback(RefreshTimer_Tick);
             RefreshTimer = new Timer(RefreshCallback, null, 0, 10000);
         }
@@ -32,6 +74,7 @@ namespace Project_Sauron
                 using (UserContext DB = new UserContext())
                 {
                     VkApi Bound = new VkApi();
+                    //доработать, въебать селект
                     List<UserInfo> Temp = Bound.Users_Info(string.Join(",", DB.Enemies));
 
                     //Заккоментирован
@@ -83,7 +126,7 @@ namespace Project_Sauron
 
                     int i = 0;
                     bool onl = false;
-                    foreach (var item in DB.Enemies)
+                    foreach (Enemy item in DB.Enemies)
                     {
                         item.Name = Temp[i].first_name + " " + Temp[i].last_name;
                         item.LastActivity = Temp[i].last_seen.time;
@@ -133,7 +176,5 @@ namespace Project_Sauron
                 catch { }
             }
         }
-
-
     }
 }

@@ -1,11 +1,14 @@
-﻿using System.Data.Entity;
+﻿using Project_Sauron.DataAccesLayer;
+using System.Data.Entity;
 
 namespace Project_Sauron.Models
 {
     public class UserContext : DbContext
     {
         public UserContext() : base("DefaultConnection")
-        { }
+        {
+
+        }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Enemy> Enemies { get; set; }

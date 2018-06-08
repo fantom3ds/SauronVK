@@ -28,6 +28,7 @@ namespace Project_Sauron.Models
         [ForeignKey("Role")]
         public int RoleId { get; set; }
         public Role Role { get; set; }
+
         public DateTime RegDate { get; set; }
         public int Messages { get; set; }
         public int Status { get; set; }

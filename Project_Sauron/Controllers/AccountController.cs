@@ -21,27 +21,33 @@ namespace Project_Sauron.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                // поиск пользователя в бд
-                User user = null;
-                using (UserContext db = new UserContext())
+                if (ModelState.IsValid)
                 {
-                    Guid password = GetHashString(model.Password);
-                    user = db.Users.FirstOrDefault(u => u.Login == model.Login && u.Password == password);
-                    if (user != null)
+                    // поиск пользователя в бд
+                    User user = null;
+                    using (UserContext db = new UserContext())
                     {
-                        FormsAuthentication.SetAuthCookie(model.Login, true);
-                        return RedirectToAction("Index", "Home");
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "Пользователя с таким логином и паролем нет");
+                        Guid password = GetHashString(model.Password);
+                        user = db.Users.FirstOrDefault(u => u.Login == model.Login && u.Password == password);
+                        if (user != null)
+                        {
+                            FormsAuthentication.SetAuthCookie(model.Login, true);
+                            return RedirectToAction("Index", "Home");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "Пользователя с таким логином и паролем нет");
+                        }
                     }
                 }
-                
+                return View(model);
             }
-            return View(model);
+            catch(Exception Ex)
+            {
+                return new HttpNotFoundResult(Ex.Message + "\n" + Ex.TargetSite + "\n" + Ex.InnerException);
+            }
         }
 
         //==============================Регистрация (пока закрыта)=======================================

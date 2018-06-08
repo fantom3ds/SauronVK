@@ -1,14 +1,10 @@
-﻿using AutoMapper;
-using Project_Sauron.Models;
+﻿using Project_Sauron.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using VKAPI;
-
 using System.Data.Entity;
-using System.Threading.Tasks;
 using System.Text;
 using System.Security.Cryptography;
 
