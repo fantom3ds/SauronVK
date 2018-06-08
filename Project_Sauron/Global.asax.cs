@@ -74,81 +74,37 @@ namespace Project_Sauron
                 using (UserContext DB = new UserContext())
                 {
                     VkApi Bound = new VkApi();
-                    //доработать, въебать селект
-                    List<UserInfo> Temp = Bound.Users_Info(string.Join(",", DB.Enemies));
+                    List<UserInfo> Temp = Bound.Users_Info(string.Join(",", DB.Enemies.Select(s => s.Link).ToList()));
 
-                    //Заккоментирован
-                    #region Мой вариант
-
-                    ////Вытаскиваем все данные из БД
-                    //List<Enemy> AllEnemies = new List<Enemy>(DB.Enemies); //+1
-                    //List<EnemyEvent> AllEvents = new List<EnemyEvent>(DB.EnemyEvents);
-
-                    ////Удаляем всех из базы
-                    //DB.Enemies.RemoveRange(AllEnemies);
-                    //DB.SaveChanges();//+1
-
-                    //foreach (var item in AllEnemies)
-                    //{
-                    //    //Присваиваем каждому врагу список его событий
-                    //    item.EnemyEvents = AllEvents.Where(L => L.EnemyId == item.Id).ToList();
-                    //    //Начинаем обновлять данные
-                    //    item.Name = Temp[i].first_name + " " + Temp[i].last_name;
-                    //    item.LastActivity = Temp[i].last_seen.time;
-                    //    item.Photo = Temp[i].photo_200_orig;
-                    //    if (Temp[i].online == 0)
-                    //        onl = false;
-                    //    else
-                    //        onl = true;
-                    //    if (item.Online != onl)
-                    //    {
-                    //        if (item.Online)
-                    //            item.EnemyEvents.Add(new EnemyEvent { Enemy = item, Time = item.LastActivity, EventTypeId = 2 });
-                    //        else
-                    //            item.EnemyEvents.Add(new EnemyEvent { Enemy = item, Time = item.LastActivity, EventTypeId = 1 });
-                    //    }
-                    //    item.Online = onl;
-                    //    if (item.Status != Temp[i].status)
-                    //    {
-                    //        item.EnemyEvents.Add(new EnemyEvent { Enemy = item, Time = item.LastActivity, EventTypeId = 3 });
-                    //    }
-                    //    item.Status = Temp[i].status;
-                    //    i++;
-                    //    item.Id = new int();
-                    //}
-                    //DB.Enemies.AddRange(AllEnemies);
-                    //DB.SaveChanges();//+1
-
-                    #endregion
-
-                    //Включен
-                    #region Вариант Верескуна
+                    #region Обновление
 
                     int i = 0;
                     bool onl = false;
                     foreach (Enemy item in DB.Enemies)
                     {
-                        item.Name = Temp[i].first_name + " " + Temp[i].last_name;
+                        if (item.Name != Temp[i].first_name + " " + Temp[i].last_name)
+                            item.Name = Temp[i].first_name + " " + Temp[i].last_name;
                         item.LastActivity = Temp[i].last_seen.time;
-                        //item.Photo = Temp[i].photo_200_orig;
-
+                        //Преобразуем byte в bool
                         if (Temp[i].online == 0)
                             onl = false;
                         else
                             onl = true;
+                        //Проверяем онлайн
                         if (item.Online != onl)
                         {
                             if (item.Online)
                                 DB.EnemyEvents.Add(new EnemyEvent { EnemyId = item.Id, Time = item.LastActivity, EventTypeId = 2 });
                             else
                                 DB.EnemyEvents.Add(new EnemyEvent { EnemyId = item.Id, Time = item.LastActivity, EventTypeId = 1 });
+                            item.Online = onl;
                         }
-                        item.Online = onl;
+                        //Проверяем статус
                         if (item.Status != Temp[i].status)
                         {
                             DB.EnemyEvents.Add(new EnemyEvent { EnemyId = item.Id, Time = item.LastActivity, EventTypeId = 3 });
+                            item.Status = Temp[i].status;
                         }
-                        item.Status = Temp[i].status;
                         i++;
                     }
 

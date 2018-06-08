@@ -7,6 +7,7 @@ using VKAPI;
 using System.Data.Entity;
 using System.Text;
 using System.Security.Cryptography;
+using Newtonsoft.Json;
 
 namespace Project_Sauron.Controllers
 {
@@ -16,7 +17,8 @@ namespace Project_Sauron.Controllers
         //Вполне оптимально работает
         public ActionResult Index()
         {
-            List<Enemy> enemies2 = new List<Enemy>();
+            //ViewBag.User = new User();
+            List <Enemy> enemies2 = new List<Enemy>();
             try
             {
                 using (UserContext DB = new UserContext())
@@ -47,12 +49,23 @@ namespace Project_Sauron.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddEnemy(string link)
+        public ActionResult AddEnemy(EnemyModel model)
         {
             try
             {
+                string normalID = "";
+                if (model.Link.Contains("/"))
+                {
+                    if (model.Link.LastIndexOf("/") != model.Link.Length - 1)
+                        normalID = model.Link.Substring(model.Link.LastIndexOf('/') + 1);
+                    else
+                        throw new ArgumentException();
+                }
+                else
+                    normalID = model.Link;
+                
                 VkApi vk = new VkApi();
-                var temp = vk.User_Info(link);
+                var temp = vk.User_Info(normalID);
                 Enemy enemy = null;
 
                 using (UserContext DB = new UserContext())
@@ -82,23 +95,27 @@ namespace Project_Sauron.Controllers
 
                             DB.Enemies.Add(enemy);
                             DB.SaveChanges();
+                            return RedirectToAction("Index");
                         }
-                        catch (Exception Ex)
+                        catch
                         {
-                            ModelState.AddModelError("", Ex.Message + " | " + Ex.TargetSite);
+                            return RedirectToAction("AddEnemy");
                         }
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Такой пользователь уже существует");
+                        return RedirectToAction("AddEnemy");
                     }
                 }//DbContext
             }
-            catch
+            catch(ArgumentNullException)//Если такого пользователя не существует
             {
-
+                return RedirectToAction("AddEnemy");//заглушка
             }
-            return RedirectToAction("Index");
+            catch(Exception)
+            {
+                return RedirectToAction("AddEnemy");
+            }
         }
 
         #endregion
