@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Project_Sauron.DataAccesLayer
 {
-    public class ForumDao : IForumDao
+    public class ForumDao 
     {
         public List<Topic> GetForIndex()
         {
