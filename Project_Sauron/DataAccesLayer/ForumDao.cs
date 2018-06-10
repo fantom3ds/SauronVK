@@ -1,9 +1,6 @@
-﻿using Project_Sauron.Logic;
-using Project_Sauron.Models;
-using System;
+﻿using Project_Sauron.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace Project_Sauron.DataAccesLayer
 {
@@ -23,7 +20,7 @@ namespace Project_Sauron.DataAccesLayer
             Topic topic = null;
             using (var db = new UserContext())
             {
-                return topic = db.Topics.FirstOrDefault(a => a.Id == id);
+                return topic = db.Topics.Find(id);
             }
         }
 
