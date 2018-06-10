@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Project_Sauron.DataAccesLayer
 {
-    public class ForumDao 
+    public class ForumDao
     {
         public List<Topic> GetForIndex()
         {
@@ -20,10 +20,10 @@ namespace Project_Sauron.DataAccesLayer
 
         public Topic GetTopic(int id)
         {
-            Topic topic;
+            Topic topic = null;
             using (var db = new UserContext())
             {
-                return topic = db.Topics.Find(id);
+                return topic = db.Topics.FirstOrDefault(a => a.Id == id);
             }
         }
 
@@ -83,10 +83,10 @@ namespace Project_Sauron.DataAccesLayer
 
         public User GetUser(string nickname)
         {
-            User user;
+            User user = null;
             using (var db = new UserContext())
             {
-                return user = (User)db.Users.Where(u => u.Nickname == nickname).FirstOrDefault();
+                return user = db.Users.FirstOrDefault(u => u.Login == nickname);
             }
         }
 

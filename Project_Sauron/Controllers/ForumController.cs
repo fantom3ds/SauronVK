@@ -61,7 +61,6 @@ namespace Project_Sauron.Controllers
         [HttpPost]
         public ActionResult AddComment(CommentModel model)
         {
-
             if (ModelState.IsValid)
             {
                 flogic.AddComment(_topicId, User.Identity.Name, model.Text);

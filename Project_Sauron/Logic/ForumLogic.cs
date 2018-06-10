@@ -8,7 +8,7 @@ using System.Web;
 
 namespace Project_Sauron.Logic
 {
-    public class ForumLogic 
+    public class ForumLogic
     {
         ForumDao fdao = new ForumDao();
 
@@ -57,7 +57,7 @@ namespace Project_Sauron.Logic
         public string GetUserTime(string userName)
         {
             User user = fdao.GetUser(userName);
-            TimeSpan time = (DateTime.Now.Subtract(user.RegDate));
+            TimeSpan time = (DateTime.Now - user.RegDate);
             string days = time.ToString("%d");
             string hours = time.ToString("%h");
             string minutes = time.ToString("%m");
