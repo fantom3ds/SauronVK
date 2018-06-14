@@ -29,7 +29,8 @@ namespace Project_Sauron.DataAccesLayer
 
        
         public bool UserExist(string username, string Password)
-        {           
+        {
+            Guid pass = EncoderGuid.PasswordToGuid.Get(Password);
             using (var db = new UserContext())
             {              
                 var users = db.Users.Select(c => new
@@ -39,7 +40,7 @@ namespace Project_Sauron.DataAccesLayer
                 });
                 foreach (var u in users)
                 {
-                    if (u.login == username && u.Password == password) return true;
+                    if (u.login == username && u.pas == pass) return true;
                 }
             }
             return false;

@@ -13,15 +13,17 @@ namespace Project_Sauron.Logic
         UserDao udao = new UserDao();
         public List<User> GetUsers()=>udao.GetUsers();
 
-        Guid password = EncoderGuid.Encoder.GetHashString(model.Password);
+        //Тут сама разберись, чо да как, откуда ты берешь строку пароля
+        Guid password = EncoderGuid.PasswordToGuid.Get(model.Password);
 
         public void AddUser(string nickname, string password, string email)
         {
-            Guid password = udao.GetHashString(password);
+            //Сложно было??
+            Guid pass = EncoderGuid.PasswordToGuid.Get(password);
             User user = new User()
             {
                 Nickname = nickname,
-                Password = password,
+                Password = pass,
                 Email = email,
                 RegDate = DateTime.Now
             };
