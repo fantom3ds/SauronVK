@@ -1,9 +1,6 @@
-﻿using Project_Sauron.Logic;
-using Project_Sauron.Models;
-using System;
+﻿using Project_Sauron.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace Project_Sauron.DataAccesLayer
 {
