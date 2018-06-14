@@ -50,6 +50,7 @@ namespace Project_Sauron.Migrations
                         RegDate = c.DateTime(nullable: false),
                         Messages = c.Int(nullable: false),
                         Status = c.Int(nullable: false),
+                        ConfirmedEmail = c.Boolean(nullable: false),
                         SiteTheme_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)

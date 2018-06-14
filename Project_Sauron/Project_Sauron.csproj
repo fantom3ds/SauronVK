@@ -46,7 +46,7 @@
   <ItemGroup>
     <Reference Include="EncoderGuid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\EncoderGuid.dll</HintPath>
+      <HintPath>..\..\..\..\Downloads\EncoderGuid.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -186,15 +186,16 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DataAccesLayer\ForumDao.cs" />
     <Compile Include="DataAccesLayer\UserDao.cs" />
+    <Compile Include="Logic\EncoderGuid.cs" />
     <Compile Include="Logic\ForumLogic.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Logic\UserLogic.cs" />
-    <Compile Include="Migrations\201806131604069_Initial.cs" />
-    <Compile Include="Migrations\201806131604069_Initial.Designer.cs">
-      <DependentUpon>201806131604069_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201806141911286_Initial.cs" />
+    <Compile Include="Migrations\201806141911286_Initial.Designer.cs">
+      <DependentUpon>201806141911286_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Forum\Comment.cs" />
@@ -259,8 +260,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806131604069_Initial.resx">
-      <DependentUpon>201806131604069_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806141911286_Initial.resx">
+      <DependentUpon>201806141911286_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

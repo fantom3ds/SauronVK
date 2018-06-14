@@ -13,7 +13,7 @@ namespace Project_Sauron.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201806131604069_Initial"; }
+            get { return "201806141911286_Initial"; }
         }
         
         string IMigrationMetadata.Source
