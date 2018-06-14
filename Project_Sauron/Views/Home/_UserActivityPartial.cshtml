@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Project_Sauron.Models.Comment>
+<h2>Активность</h2>
+<div class="activity">
+    @foreach (var c in Model)
+    {
+        <div class="topic">
+            <div class="image">            
+                <div class="topic_content">
+                    Отвечает в теме <a href="@Url.Action("Topic", "Forum", new { id = c.TopicId})">@c.TopicName</a>
+                </div>
+                <p>@c.Text</p>
+                <div class="date">
+                    @c.Pubdate
+                </div>
+            </div>
+        </div>
+    }
+</div>

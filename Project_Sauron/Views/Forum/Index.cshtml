@@ -1,17 +1,17 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
-<div class="content">
-    <h2>Форум</h2>
-    @foreach (var s in Model)
-    {
-        <div class="section">
-            <h3 class="link"><a href="@Url.Action("Section", "Forum", new { id = s.Id, sectionName = s.SectionName})">@s.SectionName</a></h3>
-            <div class="section_content">
-                @Html.Action("SectionTopicsShort", "Forum", new { id = s.Id })
+
+    <div class="content">
+        <h2>Форум</h2>
+        @foreach (var s in Model)
+        {
+            <div class="section">
+                <h5 class="link"><a href="@Url.Action("Section", "Forum", new { id = s.Id, sectionName = s.SectionName})">@s.SectionName</a></h5>
+                <div class="section_content">
+                    @Html.Action("SectionTopicsShort", "Forum", new { id = s.Id })
+                </div>
             </div>
-        </div>
-    }
 
-
-</div>
+        }
+    </div>

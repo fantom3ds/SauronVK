@@ -46,6 +46,7 @@ namespace Project_Sauron.Migrations
                         Nickname = c.String(maxLength: 20),
                         Photo = c.String(maxLength: 50),
                         RoleId = c.Int(nullable: false),
+                        Email = c.String(nullable: false),
                         RegDate = c.DateTime(nullable: false),
                         Messages = c.Int(nullable: false),
                         Status = c.Int(nullable: false),

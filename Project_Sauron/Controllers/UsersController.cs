@@ -2,10 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Project_Sauron.Controllers
 {
@@ -20,7 +23,7 @@ namespace Project_Sauron.Controllers
                 List<User> users = new List<User>(Allusers.Users.Where(x => x.Role.Name == "user"));
                 return View(users);
             }
-        }
+        }      
 
         #region Админская регистрация нового пользователя
 

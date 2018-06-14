@@ -20,10 +20,10 @@ namespace Project_Sauron.DataAccesLayer
 
         public Topic GetTopic(int id)
         {
-            Topic topic = null;
+            Topic topic;
             using (var db = new UserContext())
             {
-                return topic = db.Topics.FirstOrDefault(a => a.Id == id);
+                return topic = db.Topics.Find(id);
             }
         }
 
@@ -95,7 +95,7 @@ namespace Project_Sauron.DataAccesLayer
             User user;
             using (var db = new UserContext())
             {
-                user = db.Users.Where(u => u.Nickname == nickname).FirstOrDefault();
+                user = db.Users.FirstOrDefault();
                 user.Messages += 1;
                 db.SaveChanges();
             }

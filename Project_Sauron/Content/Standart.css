@@ -27,6 +27,9 @@ body {
     background-color: #C0C0C0;
     opacity: 0.8;
 }
+.Section {
+    background-color: #c7b39b;
+}
 
 /*Подвал, или надпись внизу*/
 .Sauronfooter {
@@ -287,4 +290,7 @@ td:last-child {
 
 .dl-PrivateOffice {
     background-color: #DFDFDF;
+}
+.dl-section {
+    background-color: CornflowerBlue;
 }

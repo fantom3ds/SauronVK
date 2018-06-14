@@ -29,10 +29,15 @@ namespace Project_Sauron.Models
         public int RoleId { get; set; }
         public Role Role { get; set; }
 
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Почта")]
+        public string Email { get; set; }
+
         public DateTime RegDate { get; set; }
         public int Messages { get; set; }
         public int Status { get; set; }
-
+        public bool ConfirmedEmail { get; set; }
         public List<Enemy> Enemies { get; set; }
 
         public virtual SiteTheme SiteTheme { get; set; } = null;

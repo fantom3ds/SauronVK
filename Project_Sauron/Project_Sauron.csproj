@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EncoderGuid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Downloads\EncoderGuid.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -181,14 +185,16 @@
     <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DataAccesLayer\ForumDao.cs" />
+    <Compile Include="DataAccesLayer\UserDao.cs" />
     <Compile Include="Logic\ForumLogic.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806080740119_Initial.cs" />
-    <Compile Include="Migrations\201806080740119_Initial.Designer.cs">
-      <DependentUpon>201806080740119_Initial.cs</DependentUpon>
+    <Compile Include="Logic\UserLogic.cs" />
+    <Compile Include="Migrations\201806131604069_Initial.cs" />
+    <Compile Include="Migrations\201806131604069_Initial.Designer.cs">
+      <DependentUpon>201806131604069_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Forum\Comment.cs" />
@@ -244,6 +250,7 @@
     <Content Include="Views\Forum\_CommentPartial.cshtml" />
     <Content Include="Views\Forum\_SectionTopicShortPartial.cshtml" />
     <Content Include="Views\Forum\_UserInfoPartial.cshtml" />
+    <Content Include="Views\Home\_UserActivityPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -252,11 +259,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806080740119_Initial.resx">
-      <DependentUpon>201806080740119_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806131604069_Initial.resx">
+      <DependentUpon>201806131604069_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
